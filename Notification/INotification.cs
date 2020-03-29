@@ -8,7 +8,7 @@ namespace Notification
 {
     public interface INotification
     {
-         void LightPanel();
+        
         void TurnOnSound();
 
         string userCredentials();

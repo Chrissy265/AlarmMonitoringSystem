@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification", "Notification\Notification.csproj", "{6B6FD272-9194-422C-9FF2-D3C8546A194C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AlarmMonitorData", "AlarmMonitorData", "{CAAAE4A7-7116-40B7-B161-38559DB19C01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmMonitoringData", "AlarmMonitoringData\AlarmMonitoringData.csproj", "{E3FD0B43-BDD4-4EEB-8ADA-DD4F383FA64C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{6B6FD272-9194-422C-9FF2-D3C8546A194C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B6FD272-9194-422C-9FF2-D3C8546A194C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B6FD272-9194-422C-9FF2-D3C8546A194C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3FD0B43-BDD4-4EEB-8ADA-DD4F383FA64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3FD0B43-BDD4-4EEB-8ADA-DD4F383FA64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3FD0B43-BDD4-4EEB-8ADA-DD4F383FA64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3FD0B43-BDD4-4EEB-8ADA-DD4F383FA64C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E3FD0B43-BDD4-4EEB-8ADA-DD4F383FA64C} = {CAAAE4A7-7116-40B7-B161-38559DB19C01}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E4245D4-BB97-46F8-9E5E-76EEF267533C}

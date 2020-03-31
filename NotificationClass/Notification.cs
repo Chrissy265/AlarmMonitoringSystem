@@ -8,5 +8,8 @@ namespace NotificationClass
 {
     public class Notification
     {
+
+        int sensorId; 
+    
     }
 }

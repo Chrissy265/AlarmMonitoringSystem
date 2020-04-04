@@ -9,17 +9,18 @@ namespace Notification
     public interface INotification
     {
         
-        void TurnOnSound();
+       
 
-        string userCredentials();
+       void userCredentials();
 
-        int resetSensor();
+        int Resetsensor();
 
         void notifyEmergencyServices();
 
         void notifyMonitoringServices();
 
-        void LogTable(); 
+        void LogTable();
 
+        void insertSecuritypin(); 
     }
 }

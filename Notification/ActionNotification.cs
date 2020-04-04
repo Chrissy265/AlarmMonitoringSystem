@@ -3,41 +3,114 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Notification.Models; 
 
 
 namespace Notification
 {
     public class ActionNotification : INotification
     {
- 
+         
+
+        //1 means the flag is on to log to the table 
+        int logFlag = 1;
+        private string _securitypin;
+
+        public void insertSecuritypin(Sensor_FireHazardModel sensor)
+        {
+            User user = new User();
+            //User security pin 
+          
+            //verify the sensor 
+
+            if(sensor != null)
+            {
+                //Ask the user to the insert pin on the monitor 
+                Console.WriteLine("Insert the same security pin");
+
+                string  _securitypin = Console.ReadLine(); 
+                
+
+            } 
+            
+           if( _securitypin == user.securityPin)
+            {
+                resetSensor(); 
+            }
+        }
+
+        public void insertSecuritypin(User user)
+        {
+            
+        }
+
         public void LogTable()
         {
-            throw new NotImplementedException();
+           
+            
+
+           
+
+
+            
+            
         }
 
-        public void notifyEmergencyServices()
+
+
+     
+
+        public void notifyEmergencyServices(EmergencyServices services)
         {
-            throw new NotImplementedException();
+          
+
+            if(services.enabled == true)
+            {
+                displayPanel.ToString(" Emergency Services"); 
+            }
+
+
         }
 
-        public void notifyMonitoringServices()
+        public void notifyMonitoringServices( EmergencyServices services)
         {
-            throw new NotImplementedException();
+            if(services.enabled ==true)
+            {
+                displayPanel.ToString("Notify Monitor "); 
+            }
+
         }
 
-        public int resetSensor()
+        public int resetSensor(Sensor_FireHazardModel sensor)
         {
-            throw new NotImplementedException();
+            if(sensor = 0)
+            {
+                bool resetDisplayPanel = true; 
+            }
+
+            return resetDisplayPanel; 
+
+            
+
         }
 
-        public void TurnOnSound()
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        public string userCredentials()
+      
+        public void  userCredentials()
         {
-            throw new NotImplementedException();
+           
+
+            User user1 = new User();
+
+            Console.WriteLine("Insert the username");
+            user1.username = Console.ReadLine();
+
+
+            Console.WriteLine("Insert password");
+            user1.password = Console.ReadLine();
+
+            
         }
     }
 }

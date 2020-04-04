@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Notification.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,7 +10,21 @@ namespace AlarmMonitoringData
 {
     class AlarmMonitorDbContext :DbContext 
     {
+        //Entities 
+        public DbSet<Log> logger { get; set; }
 
+        public AlarmMonitorDbContext()
+        {
 
+        }
+
+   
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
+      
+      
     }
 }

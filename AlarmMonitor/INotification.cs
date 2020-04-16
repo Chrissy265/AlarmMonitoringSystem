@@ -9,9 +9,6 @@ namespace AlarmMonitor
     public interface INotification
     {
     
-
-
-
             void userCredentials();
 
             int Resetsensor();

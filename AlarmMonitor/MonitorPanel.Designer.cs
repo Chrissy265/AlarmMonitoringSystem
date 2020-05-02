@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.numPad = new System.Windows.Forms.Panel();
+            this.btnUserSettings = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnEnter = new System.Windows.Forms.Button();
             this.btnZero = new System.Windows.Forms.Button();
@@ -43,7 +45,14 @@
             this.btnTwo = new System.Windows.Forms.Button();
             this.btnOne = new System.Windows.Forms.Button();
             this.displayPanel = new System.Windows.Forms.ListView();
-            this.btnConfigure = new System.Windows.Forms.Button();
+            this.btnSensor1 = new System.Windows.Forms.Button();
+            this.firehazard_listView = new System.Windows.Forms.ListView();
+            this.btnSensor2 = new System.Windows.Forms.Button();
+            this.btnSensor3 = new System.Windows.Forms.Button();
+            this.textBoxTriggerSensors = new System.Windows.Forms.TextBox();
+            this.timer_ToEnterPin = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer_turnOffAlarm = new System.Windows.Forms.Timer(this.components);
             this.numPad.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +68,7 @@
             // 
             // numPad
             // 
+            this.numPad.Controls.Add(this.btnUserSettings);
             this.numPad.Controls.Add(this.btnBack);
             this.numPad.Controls.Add(this.btnEnter);
             this.numPad.Controls.Add(this.btnZero);
@@ -73,8 +83,17 @@
             this.numPad.Controls.Add(this.btnOne);
             this.numPad.Location = new System.Drawing.Point(386, 239);
             this.numPad.Name = "numPad";
-            this.numPad.Size = new System.Drawing.Size(427, 226);
+            this.numPad.Size = new System.Drawing.Size(432, 236);
             this.numPad.TabIndex = 1;
+            // 
+            // btnUserSettings
+            // 
+            this.btnUserSettings.Location = new System.Drawing.Point(174, 203);
+            this.btnUserSettings.Name = "btnUserSettings";
+            this.btnUserSettings.Size = new System.Drawing.Size(75, 23);
+            this.btnUserSettings.TabIndex = 9;
+            this.btnUserSettings.Text = "Settings";
+            this.btnUserSettings.UseVisualStyleBackColor = true;
             // 
             // btnBack
             // 
@@ -198,30 +217,78 @@
             // 
             // displayPanel
             // 
-            this.displayPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.displayPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.displayPanel.HideSelection = false;
-            this.displayPanel.Location = new System.Drawing.Point(411, 63);
+            this.displayPanel.Location = new System.Drawing.Point(386, 63);
             this.displayPanel.Name = "displayPanel";
-            this.displayPanel.Size = new System.Drawing.Size(383, 170);
+            this.displayPanel.Size = new System.Drawing.Size(222, 170);
             this.displayPanel.TabIndex = 2;
             this.displayPanel.UseCompatibleStateImageBehavior = false;
             this.displayPanel.SelectedIndexChanged += new System.EventHandler(this.displayPanel_SelectedIndexChanged);
             // 
-            // btnConfigure
+            // btnSensor1
             // 
-            this.btnConfigure.Location = new System.Drawing.Point(870, 239);
-            this.btnConfigure.Name = "btnConfigure";
-            this.btnConfigure.Size = new System.Drawing.Size(80, 25);
-            this.btnConfigure.TabIndex = 4;
-            this.btnConfigure.Text = "Settings";
-            this.btnConfigure.UseVisualStyleBackColor = true;
+            this.btnSensor1.Location = new System.Drawing.Point(24, 63);
+            this.btnSensor1.Name = "btnSensor1";
+            this.btnSensor1.Size = new System.Drawing.Size(80, 25);
+            this.btnSensor1.TabIndex = 4;
+            this.btnSensor1.Text = "Sensor 1";
+            this.btnSensor1.UseVisualStyleBackColor = true;
+            this.btnSensor1.Click += new System.EventHandler(this.btnSensor1_Click);
+            // 
+            // firehazard_listView
+            // 
+            this.firehazard_listView.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.firehazard_listView.HideSelection = false;
+            this.firehazard_listView.Location = new System.Drawing.Point(604, 63);
+            this.firehazard_listView.Name = "firehazard_listView";
+            this.firehazard_listView.Size = new System.Drawing.Size(202, 170);
+            this.firehazard_listView.TabIndex = 5;
+            this.firehazard_listView.UseCompatibleStateImageBehavior = false;
+            this.firehazard_listView.SelectedIndexChanged += new System.EventHandler(this.firehazard_listView_SelectedIndexChanged);
+            // 
+            // btnSensor2
+            // 
+            this.btnSensor2.Location = new System.Drawing.Point(24, 137);
+            this.btnSensor2.Name = "btnSensor2";
+            this.btnSensor2.Size = new System.Drawing.Size(75, 23);
+            this.btnSensor2.TabIndex = 6;
+            this.btnSensor2.Text = "Sensor 2";
+            this.btnSensor2.UseVisualStyleBackColor = true;
+            this.btnSensor2.Click += new System.EventHandler(this.btnSensor2_Click);
+            // 
+            // btnSensor3
+            // 
+            this.btnSensor3.Location = new System.Drawing.Point(24, 209);
+            this.btnSensor3.Name = "btnSensor3";
+            this.btnSensor3.Size = new System.Drawing.Size(75, 23);
+            this.btnSensor3.TabIndex = 7;
+            this.btnSensor3.Text = "Sensor 3";
+            this.btnSensor3.UseVisualStyleBackColor = true;
+            this.btnSensor3.Click += new System.EventHandler(this.btnSensor3_Click);
+            // 
+            // textBoxTriggerSensors
+            // 
+            this.textBoxTriggerSensors.Location = new System.Drawing.Point(20, 25);
+            this.textBoxTriggerSensors.Name = "textBoxTriggerSensors";
+            this.textBoxTriggerSensors.Size = new System.Drawing.Size(131, 20);
+            this.textBoxTriggerSensors.TabIndex = 8;
+            this.textBoxTriggerSensors.Text = "Trigger Sensors";
+            // 
+            // timer_turnOffAlarm
+            // 
+            this.timer_turnOffAlarm.Tick += new System.EventHandler(this.btnSensor1_Click);
             // 
             // MonitorPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1201, 477);
-            this.Controls.Add(this.btnConfigure);
+            this.Controls.Add(this.textBoxTriggerSensors);
+            this.Controls.Add(this.btnSensor3);
+            this.Controls.Add(this.btnSensor2);
+            this.Controls.Add(this.firehazard_listView);
+            this.Controls.Add(this.btnSensor1);
             this.Controls.Add(this.displayPanel);
             this.Controls.Add(this.numPad);
             this.Controls.Add(this.textBox1);
@@ -248,9 +315,17 @@
         private System.Windows.Forms.Button btnTwo;
         private System.Windows.Forms.Button btnOne;
         private System.Windows.Forms.ListView displayPanel;
-        private System.Windows.Forms.Button btnConfigure;
+        private System.Windows.Forms.Button btnSensor1;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnEnter;
+        private System.Windows.Forms.ListView firehazard_listView;
+        private System.Windows.Forms.Button btnUserSettings;
+        private System.Windows.Forms.Button btnSensor2;
+        private System.Windows.Forms.Button btnSensor3;
+        private System.Windows.Forms.TextBox textBoxTriggerSensors;
+        private System.Windows.Forms.Timer timer_ToEnterPin;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer_turnOffAlarm;
     }
 }
 

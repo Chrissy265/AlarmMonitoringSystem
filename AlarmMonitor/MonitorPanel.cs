@@ -7,26 +7,112 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AlarmMonitor.Model; 
+
 
 namespace AlarmMonitor
 {
     public partial class MonitorPanel : Form
-    {
+    { 
         public MonitorPanel()
         {
             InitializeComponent();
         }
 
+   
+
+       
+     
+
+
+        private void enteredSecurityPin()
+        {
+            //string one = "1";
+
+            //ListViewItem item = new ListViewItem();
+            //displayPanel.Items.Add(item);
+            //item.Text = one.ToString();
+
+            //if (item != null)
+            //{
+            //    numbersEntered.Add(one);
+            //}
+
+
+            ListViewItem item = new ListViewItem();
+            displayPanel.Items.Add(item);
+
+            //Tell the user insert pin 
+            string EnteredpinSecurity = "Insert pin";
+            string notifyService = "Notifying Service"; 
+
+            item.Text = EnteredpinSecurity.ToString();
+
+            //string pinSecurity = "1234";
+
+
+            Timer timer = new Timer();
+            //Keep track how much time is remaining
+            int timeLeft = 60;
+
+            timer.Start();
+            if(timeLeft > 0)
+            {
+                timeLeft = timeLeft - 1;
+                //firehazard_listView.Items.Add(item);
+                item.Text = timeLeft + "seconds";
+                
+                if(pinSecurity.Contains("1234"))
+                {
+                    timer.Stop(); 
+                }
+                else
+                {
+                    item.Text = notifyService;
+
+
+                    notifyServices();
+                }
+            }
+        
+         
+        }
+
+        private void notifyServices()
+        {
+
+            string contact911 = "Contacting 911";
+            string notifyMonitorService = "Contacting IIS";
+
+            firehazard_listView.View = View.Details;
+            firehazard_listView.Columns.Add("Notify Service", -2, HorizontalAlignment.Center);
+
+            ListViewItem item = new ListViewItem();
+            firehazard_listView.View = View.Details;
+
+           
+                item.Text = contact911;
+                item.Text = notifyMonitorService;
+                firehazard_listView.Items.Add(item);
+            
+            
+            
+        }
         //public string[] numberEntries = new string[5];
         //Create a global list that keeps the number of entries stored 
         List <string> numbersEntered = new List<string>();
+
+        List<string> pinSecurity = new List<string>();
+
         private readonly int intnumList;
+        private readonly int pin_entered;
+        public int securityPinForPanel = 1234;
 
         public void displayPanel_SelectedIndexChanged(object sender, EventArgs e)
         {
             displayPanel.View = View.SmallIcon;
              
-            displayPanel.Columns.Add("Pin Code", -2,HorizontalAlignment.Left); 
+            displayPanel.Columns.Add("Pin Code", -2,HorizontalAlignment.Center); 
             
             ListViewItem item = new ListViewItem();
 
@@ -34,7 +120,7 @@ namespace AlarmMonitor
 
             displayPanel.Items.Add(item);
 
-           
+
 
             //ListViewItem item = new ListViewItem();
 
@@ -45,6 +131,20 @@ namespace AlarmMonitor
 
 
         }
+
+
+        private void firehazard_listView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            firehazard_listView.View = View.LargeIcon;
+            firehazard_listView.Columns.Add("Fire Hazard :", -2, HorizontalAlignment.Left);
+            
+
+
+        }
+
+       
+
+        
 
         private void btnThree_Click(object sender, EventArgs e)
         {
@@ -200,11 +300,24 @@ namespace AlarmMonitor
 
         }
 
+    
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            
 
+            //var pin_entered = pinSecurity.Select(n => Convert.ToInt32(n)).ToList();
+            //ListViewItem item = new ListViewItem();
             
+            //firehazard_listView.Focus();
+            //if (firehazard_listView.Items.Contains()
+            //{
+            //    firehazard_listView.SelectedIndices.Contains(securityPinForPanel);
+            //    enteredSecurityPin();
+            //}
+
+           
+
+
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -225,6 +338,59 @@ namespace AlarmMonitor
            
         }
 
-   
+        private void btnSensor1_Click(object sender, EventArgs e)
+        {
+            
+            
+            Sensor sensor1 = new Sensor();
+            
+            sensor1.Fire = "Fire";
+            sensor1.zoneArea = "Kitchen";
+
+
+            ListViewItem item = new ListViewItem();
+            ListViewItem item2 = new ListViewItem(); 
+            firehazard_listView.Items.Add(item);
+            displayPanel.Items.Add(item2); 
+            item.Text = sensor1.Fire.ToString();
+            item2.Text = sensor1.zoneArea.ToString();
+
+            enteredSecurityPin();
+
+        }
+
+        private void btnSensor2_Click(object sender, EventArgs e)
+        {
+            Sensor sensor2 = new Sensor();
+
+            sensor2.Smoke = "Smoke";
+            sensor2.zoneArea = "Dining Area";
+
+            ListViewItem item = new ListViewItem();
+            ListViewItem item2 = new ListViewItem(); 
+            firehazard_listView.Items.Add(item);
+            displayPanel.Items.Add(item2); 
+            item.Text = sensor2.Smoke.ToString();
+            item2.Text = sensor2.zoneArea.ToString(); 
+
+            enteredSecurityPin(); 
+        }
+
+        private void btnSensor3_Click(object sender, EventArgs e)
+        {
+            Sensor sensor3 = new Sensor();
+
+            sensor3.Heat = "Overheating Alert";
+            sensor3.zoneArea = "Kitchen";
+
+            ListViewItem item = new ListViewItem();
+            ListViewItem item2 = new ListViewItem(); 
+            firehazard_listView.Items.Add(item);
+            displayPanel.Items.Add(item2); 
+            item.Text = sensor3.Heat.ToString();
+            item2.Text = sensor3.zoneArea.ToString(); 
+
+            enteredSecurityPin(); 
+        }
     }
 }
